@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar</title>
+</head>
+<body>
+    <h1>Buscar</h1>
+    <!-- Formulario de búsqueda -->
+    <form action="{% url 'resultado_busqueda' %}" method="GET">
+        <label for="tipo_busqueda">Tipo:</label>
+        <select name="tipo" id="tipo_busqueda">
+            <option value="curso">Curso</option>
+            <option value="alumno">Alumno</option>
+            <option value="profesor">Profesor</option>
+        </select>
+    
+        <div id="opciones_busqueda">
+            <!-- Este div se llenará dinámicamente con los campos de búsqueda -->
+        </div>
+    
+        <button type="submit">Buscar</button>
+    </form>
+    
+    <script>
+        // Función para cambiar las opciones de búsqueda según el tipo seleccionado
+        document.getElementById('tipo_busqueda').addEventListener('change', function() {
+            var tipoSeleccionado = this.value;
+            var opcionesBusqueda = document.getElementById('opciones_busqueda');
+    
+            // Limpiar opciones de búsqueda anteriores
+            opcionesBusqueda.innerHTML = '';
+    
+            // Agregar opciones de búsqueda según el tipo seleccionado
+            if (tipoSeleccionado === 'curso') {
+                opcionesBusqueda.innerHTML = `
+                    <label for="nombre_curso">Nombre del Curso:</label>
+                    <input type="text" name="nombre_curso" id="nombre_curso">
+    
+                    <label for="camada">Camada:</label>
+                    <input type="text" name="camada" id="camada">
+                `;
+            } else if (tipoSeleccionado === 'alumno') {
+                opcionesBusqueda.innerHTML = `
+                    <label for="nombre_alumno">Nombre del Alumno:</label>
+                    <input type="text" name="nombre_alumno" id="nombre_alumno">
+    
+                    <label for="edad">Edad:</label>
+                    <input type="text" name="edad" id="edad">
+                `;
+            } else if (tipoSeleccionado === 'profesor') {
+                opcionesBusqueda.innerHTML = `
+                    <label for="nombre_profesor">Nombre del Profesor:</label>
+                    <input type="text" name="nombre_profesor" id="nombre_profesor">
+    
+                    <label for="especialidad">Especialidad:</label>
+                    <input type="text" name="especialidad" id="especialidad">
+                `;
+            }
+        });
+    </script>
+    

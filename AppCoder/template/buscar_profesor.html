@@ -1,0 +1,12 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block contenido %}
+    <h2>Buscar Profesor</h2>
+    <form action="{% url 'buscar' %}" method="GET">
+        <input type="hidden" name="tipo" value="profesor">
+        <p>Nombre</p>
+        <input type="text" name="nombre" id="nombre">
+        <button>Buscar</button>
+    </form>
+{% endblock %}

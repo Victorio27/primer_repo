@@ -1,0 +1,73 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block contenido %}
+<main class="container">
+    <h1 class="text-xl-center title">Resultados de la búsqueda</h1>
+    {% if cursos %}
+        <h2>Cursos encontrados:</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Camada</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for curso in cursos %}
+                    <tr>
+                        <td>{{ curso.id }}</td>
+                        <td>{{ curso.nombre }}</td>
+                        <td>{{ curso.camada }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    
+    {% if alumnos %}
+        <h2>Alumnos encontrados:</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alumno in alumnos %}
+                    <tr>
+                        <td>{{ alumno.id }}</td>
+                        <td>{{ alumno.nombre }}</td>
+                        <td>{{ alumno.edad }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% if profesores %}
+        <h2>Profesores encontrados:</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Especialidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for profesor in profesores %}
+                    <tr>
+                        <td>{{ profesor.id }}</td>
+                        <td>{{ profesor.nombre }}</td>
+                        <td>{{ profesor.especialidad }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</main>
+{% endblock %}
