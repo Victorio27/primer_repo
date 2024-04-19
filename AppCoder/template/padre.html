@@ -29,7 +29,9 @@
                 <a class="btn btn-primary" href="{% url 'cursos' %}">Cursos</a>
                 <a class="btn btn-primary" href="{% url 'alumnos' %}">Alumnos</a>
                 <a class="btn btn-primary" href="{% url 'profesores' %}">Profesores</a>
-                <img src="{{ url }}" alt="" width="100px" height="100px">
+                {% if avatar_url %}
+                    <img src="{{ avatar_url }}" alt="Avatar">
+                {% endif %}
                 <p>Bienvenido, {{user.username}}</p>
                 <form action="{% url 'Logout' %}" method="post">
                     {% csrf_token %}
@@ -39,6 +41,7 @@
                 <a href="{% url 'alta_alumnos' %}" class="btn btn-primary">Dar de alta alumnos</a>
                 <a href="{% url 'buscar' %}" class="btn btn-primary">Buscar</a>
             {% endif %}
+
         {% endif %}
     </div>
 </nav>
