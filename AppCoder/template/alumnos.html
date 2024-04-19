@@ -4,21 +4,22 @@
 
 {% block contenido %}
 
-<main>
-    <div class="container">
-        <div class="row">
-            {% for alumno in alumnos %}
-            <div class="col-12 col-md-4">
-                <div class="card">
-                    <img src="{% static 'AppCoder/assets/img/testimonials-2.jpg' %}" alt="Imagen del alumno">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ alumno.nombre }}</h5>
-                        <p class="card-text">Edad: {{ alumno.edad }}</p>
-                    </div>
+<main class="container">
+    <h1 class="text-xl-center title"> Listado de alumnos </h1>
+    <div class="row">
+        {% for alumno in alumnos %}
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <img src="{% static 'AppCoder/assets/img/testimonials-2.jpg' %}" alt="Imagen del alumno">
+                <div class="card-body">
+                    <h5 class="card-title">{{ alumno.nombre }}</h5>
+                    <p class="card-text">Edad: {{ alumno.edad }}</p>
+                    <a href="{% url 'editar_alumno' alumno.pk %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'eliminar_alumno' alumno.pk %}" class="btn btn-danger">Eliminar</a>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
 </main>
 

@@ -12,26 +12,22 @@
                 <th>id</th>
                 <th>nombre</th>
                 <th>especialidad</th>
+                <th>Acciones</th> <!-- Agrega una columna para las acciones -->
             </tr>            
         </thead>
         <tbody>
-            {% for n in profesores %}
+            {% for profesor in profesores %}
             <tr>
-                <td>{{n.id}}</td>                
-                <td>{{n.nombre}}</td>
-                <td>{{n.especialidad}}</td>
+                <td>{{ profesor.id }}</td>                
+                <td>{{ profesor.nombre }}</td>
+                <td>{{ profesor.especialidad }}</td>
+                <td>
+                    <a href="{% url 'editar_profesor' profesor.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'confirmar_eliminar_profesor' profesor.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
             </tr>
-
             {% endfor %}
-            
         </tbody>
-
-
     </table>
-
-
-
 </main>
-
-
 {% endblock %}
