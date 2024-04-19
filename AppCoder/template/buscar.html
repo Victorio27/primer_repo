@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar</title>
-</head>
-<body>
+{% extends "padre.html" %}
+
+{% block contenido %}
     <h1>Buscar</h1>
     <!-- Formulario de búsqueda -->
     <form action="{% url 'resultado_busqueda' %}" method="GET">
@@ -61,4 +55,4 @@
             }
         });
     </script>
-    
+{% endblock %}
