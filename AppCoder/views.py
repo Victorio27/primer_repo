@@ -3,7 +3,7 @@ from AppCoder.models import Curso, Profesor, Alumno
 from django.http import HttpResponse
 from django.template import loader
 from django.db.models import Q
-from AppCoder.forms import Curso_formulario, Profesor_formulario, Alumno_formulario
+from AppCoder.forms import Curso_formulario, Profesor_formulario, Alumno_formulario, UserEditForm
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth import login, authenticate
 
@@ -213,3 +213,15 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request , "registro.html" , {"form":form})
+
+def editarPerfil(request):
+
+    usuario = request.user
+
+    if request.method == "POST":
+        pass
+
+    else:
+        miFormulario = UserEditForm(initial={"email":usuario.email})
+    
+    return render( request , "editar_perfil.html", {"miFormulario":miFormulario, "usuario":usuario})
