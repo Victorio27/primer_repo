@@ -7,7 +7,7 @@
     <h2>Editar Perfil {{usuario}}</h2>
 
 
-    <form action="">
+    <form action="" method="POST">
         {% csrf_token %}
         <table>
             {{miFormulario.as_table}}
