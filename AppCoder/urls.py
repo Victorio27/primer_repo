@@ -14,6 +14,8 @@ urlpatterns = [
     path('profesores/', views.profesores, name='profesores'),
     path('resultado_busqueda/', views.resultado_busqueda, name='resultado_busqueda'),
     path("elimina_curso/<int:id>" , views.elimina_curso , name="elimina_curso"),
-    path("editar_curso/<int:id>" , views.editar , name="editar_curso")
+    path("editar_curso/<int:id>" , views.editar , name="editar_curso"),
+    path("login", views.login_request , name="Login"),
+    path("register", views.register , name="Register")
 
 ]

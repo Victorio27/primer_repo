@@ -1,0 +1,30 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+   <h2>{{mensaje}}</h2>
+
+   <div class="container">
+        <div class="row">
+            <div class="col-12  col-md-4">
+                <div class="card">
+                    <img src="{% static 'AppCoder/assets/img/testimonials-2.jpg' %}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">{{usuario}}</h5>
+                        <p class="card-text">Me gusto mucho el curso</p>
+                        <a class="btn btn-danger" href="">Enviar mensaje</a>
+                    </div>
+                </div>
+            
+
+            </div>
+        </div>
+    </div>
+
+    <a href="" class="btn btn-danger">LogOut</a>
+
+
+{% endblock %}
