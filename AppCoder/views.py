@@ -16,19 +16,20 @@ def alta_curso(request, nombre):
     texto = f"Se guardó en la BD el curso: {curso.nombre} {curso.camada}"
     return HttpResponse(texto)
 
-@login_required
 def ver_cursos(request):
     cursos = Curso.objects.all()
     avatares = Avatar.objects.filter(user=request.user.id)
     avatar_url = avatares[0].imagen.url if avatares.exists() else None
     return render(request, "cursos.html", {"url": avatar_url, "cursos": cursos})
 
+@login_required
 def elimina_curso(request, id):
     curso = Curso.objects.get(id=id)
     curso.delete()
     cursos = Curso.objects.all()
     return render(request, "cursos.html", {"cursos": cursos})
 
+@login_required
 def editar(request, id):
     curso = Curso.objects.get(id=id)
 
@@ -60,6 +61,7 @@ def alta_alumnos(request):
         form = Alumno_formulario()
     return render(request, 'alta_alumnos.html', {'form': form})
 
+@login_required
 def editar_alumno(request, pk):
     alumno = get_object_or_404(Alumno, pk=pk)
     if request.method == 'POST':
@@ -71,6 +73,7 @@ def editar_alumno(request, pk):
         form = Alumno_formulario(instance=alumno)
     return render(request, 'editar_alumno.html', {'form': form})
 
+@login_required
 def eliminar_alumno(request, pk):
     alumno = get_object_or_404(Alumno, pk=pk)
     if request.method == 'POST':
@@ -92,6 +95,7 @@ def profesores(request):
     profesores = Profesor.objects.all()
     return render(request, 'profesores.html', {'profesores': profesores})
 
+@login_required
 def editar_profesor(request, pk):
     profesor = get_object_or_404(Profesor, pk=pk)
     if request.method == 'POST':
@@ -103,6 +107,7 @@ def editar_profesor(request, pk):
         form = Profesor_formulario(instance=profesor)
     return render(request, 'editar_profesor.html', {'form': form})
 
+@login_required
 def eliminar_profesor(request, pk):
     profesor = get_object_or_404(Profesor, pk=pk)
     if request.method == 'POST':
